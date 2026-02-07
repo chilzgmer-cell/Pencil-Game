@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencil Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="money-display">
+                <h1>Coins: $<span id="money">0.00</span></h1>
+                <p id="moneyPerTick">Per 10s: $1.00</p>
+                <p id="prestige" style="color: #ffd700; font-weight: bold; margin-top: 5px;">✦ Prestige: 0</p>
+            </div>
+            <div class="skins-btn">
+                <button onclick="toggleSkillTree()">🌳 Skill Tree</button>
+                <button onclick="toggleSkinShop()">👕 Skins</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="game-area">
+                <h2>Paper</h2>
+                <div class="paper">
+                    <canvas id="paperCanvas" width="400" height="300"></canvas>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="shop-section">
+                    <h3>Upgrades</h3>
+                    <div id="shop" class="shop-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="skillTreeModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="toggleSkillTree()">&times;</span>
+            <h2>Skill Tree</h2>
+            <div id="skillTree" class="skill-tree"></div>
+        </div>
+    </div>
+
+    <div id="skinShop" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="toggleSkinShop()">&times;</span>
+            <h2>Pencil Skins</h2>
+            <div id="skinGrid" class="skin-grid"></div>
+        </div>
+    </div>
+
+    <!-- Secret Admin Panel -->
+    <div id="adminButton" class="admin-button" onclick="toggleAdminPanel()">⚙️</div>
+    <div id="adminPanel" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="toggleAdminPanel()">&times;</span>
+            <h2>Admin Panel</h2>
+            <div style="text-align: center; padding: 20px;">
+                <input type="password" id="adminCode" placeholder="Enter code" maxlength="4" style="padding: 8px; margin-bottom: 10px; border: 1px solid #6aa8cc; border-radius: 5px; background: #1e3a4a; color: #b0d4e3;">
+                <button onclick="verifyAdminCode()" style="padding: 8px 16px; margin: 10px; background: #2a5a7f; color: #b0d4e3; border: 1px solid #6aa8cc; border-radius: 5px; cursor: pointer;">Verify</button>
+                <div id="adminControls" style="display: none; margin-top: 20px;">
+                    <button onclick="adminGiveCoins()" style="padding: 10px 20px; margin: 5px; background: #4caf50; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Give 1M Coins</button>
+                    <button onclick="adminGivePrestige()" style="padding: 10px 20px; margin: 5px; background: #ffd700; color: #000; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Give 100 Prestige</button>
+                    <button onclick="adminFreeUpgrades()" style="padding: 10px 20px; margin: 5px; background: #ff9800; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Toggle Free Upgrades</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
